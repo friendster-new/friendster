@@ -1,0 +1,48 @@
+{
+    "name": "friendster/friendster",
+    "description": "Fanmade version of the late friendster.com. We will try our best to revive and improve friendster.com",
+    "type": "project",
+    "require": {
+        "laravel/framework": "^5.8",
+        "php": "^7.1.3",
+        "laravel/tinker": "^1.0",
+        "fideloper/proxy": "^4.1"
+    },
+    "require-dev": {
+        "beyondcode/laravel-dump-server": "^1.2",
+        "filp/whoops": "^2.3",
+        "fzaninotto/faker": "^1.8",
+        "mockery/mockery": "^1.2",
+        "phpunit/phpunit": "^8.1"
+    },
+    "authors": [
+        {
+            "name": "Narakei Niwata"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Friendster\\": "../project/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "tests\\": "../tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php ../artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php ../artisan key:generate --ansi"
+        ]
+    }
+}
+
